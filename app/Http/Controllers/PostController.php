@@ -8,6 +8,7 @@ use Flasher\Prime\FlasherInterface;
 
 class PostController extends Controller
 {
+    // this function for accepting single post data
     public function new_post(Request $request) {
         $request->validate([
             'title'=>'required',
@@ -28,14 +29,14 @@ class PostController extends Controller
     }
 
      
-
+// this function for display all post into one page
     public function all_post(){
         // flash()->addSuccess('Your feedback has been submitted.');
         $posts = Post::all();
         return view('/Backend/allpost', ['posts' => $posts]);
     }
 
-
+// this function for single post editing open 
     public function edit_post($id){
         $post = Post::find($id);
 
@@ -49,6 +50,8 @@ class PostController extends Controller
 
         ]);
     }
+
+// this function for single post update 
 
     public function update_post($id, Request $request){
         $post= Post::find($id);
@@ -67,6 +70,7 @@ class PostController extends Controller
         return redirect()->route('all-post');
     }
 
+// this function for single post view 
     public function single_post($id, Request $request){
         $post = Post::find($id);
 
@@ -76,6 +80,8 @@ class PostController extends Controller
         }
         return view('/Backend/singlepost', ['post' => $post]);
     }
+
+// this function for single post delete 
 
     public function delete_post($id){
         $post = Post::findorFail($id);
