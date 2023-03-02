@@ -8,7 +8,7 @@ use Flasher\Prime\FlasherInterface;
 
 class PostController extends Controller
 {
-    // this function for accepting single post data
+    // this function for accepting single post data from form
     public function new_post(Request $request) {
         $request->validate([
             'title'=>'required',
